@@ -1,0 +1,428 @@
+/* Color Palette */
+:root {
+    --primary-green: #50B848;   /* Main green from screenshot */
+    --light-green: #E6F3E6;     /* Lighter green for accents/backgrounds */
+    --text-dark: #333333;       /* Dark text for headings/important info */
+    --text-medium: #666666;     /* Medium grey for descriptions/details */
+    --text-light: #999999;      /* Light grey for optional text/info hints */
+    --background-grey: #F0F2F5; /* Page background */
+    --card-bg: #FFFFFF;        /* Card background */
+    --border-light: #E0E0E0;    /* Light grey for input borders */
+    --shadow-light: rgba(0, 0, 0, 0.05); /* Soft shadow for cards */
+    --shadow-medium: rgba(0, 0, 0, 0.1); /* Slightly stronger shadow for hover/active */
+    --delete-red: #D32F2F;      /* Red for delete button/expense amount */
+    --delete-red-hover: #C62828; /* Darker red on hover */
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif; /* A clean, modern sans-serif font */
+    background-color: var(--background-grey);
+    margin: 0;
+    padding: 20px; /* Padding around the whole app */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    box-sizing: border-box; /* Include padding in element's total width/height */
+    color: var(--text-dark); /* Default text color */
+}
+
+.app-wrapper {
+    width: 100%;
+    max-width: 600px; /* Constrain overall width similar to screenshot */
+    margin: 0 auto; /* Center the app wrapper */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally within the wrapper */
+}
+
+/* Header Styling */
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px; /* Space above the header */
+}
+
+.header-logo {
+    font-size: 3em; /* Size of the main app icon */
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.header-logo .fas {
+    /* Adjust Font Awesome icon specifics if needed */
+    font-size: 1.2em; /* Make the icon slightly smaller relative to container */
+    vertical-align: middle; /* Align icon vertically with text (if text was there) */
+}
+
+.app-header h1 {
+    font-size: 2.5em;
+    color: var(--primary-green);
+    margin: 0;
+    font-weight: 700; /* Bolder font for the main title */
+}
+
+.app-header .tagline {
+    color: var(--text-medium);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+/* Card Base Style - Applied to all major sections */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 10px var(--shadow-light); /* Soft shadow for a floating effect */
+    margin-bottom: 20px; /* Space between cards */
+    width: 100%; /* Ensure cards take full width of wrapper */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Input Card Specifics */
+.input-card .form-group {
+    margin-bottom: 20px; /* Space between form fields */
+}
+
+.input-card label {
+    display: block; /* Label on its own line */
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.input-card .optional-text {
+    font-weight: normal;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.input-card input[type="number"],
+.input-card input[type="text"],
+.input-card input[type="date"],
+.input-card select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: var(--text-dark);
+    box-sizing: border-box; /* Crucial for consistent sizing */
+    -webkit-appearance: none; /* Remove default browser styling for selects/inputs */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.input-card input:focus,
+.input-card select:focus {
+    outline: none;
+    border-color: var(--primary-green); /* Green border on focus */
+    box-shadow: 0 0 0 3px rgba(80, 184, 72, 0.2); /* Soft green glow on focus */
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex; /* Make it a flex container to align symbol and input */
+    align-items: center; /* Vertically center items */
+}
+
+.input-with-icon .currency-symbol {
+    position: absolute;
+    left: 15px; /* Position dollar sign */
+    color: var(--text-medium);
+    font-size: 1.1em;
+    z-index: 1; /* Ensure it's above the input field */
+}
+
+.input-with-icon input[type="number"] {
+    padding-left: 35px; /* Make space for the currency symbol */
+}
+
+.input-with-icon .fas.fa-calendar-alt {
+    position: absolute;
+    right: 15px; /* Position calendar icon */
+    color: var(--text-medium);
+    pointer-events: none; /* Allows clicks to pass through to the input */
+}
+
+/* Custom dropdown arrow for select box */
+.input-card select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23666666" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px; /* Space for custom arrow */
+}
+
+.add-expense-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.add-expense-btn:hover {
+    background-color: #409C3C; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Summary Card (Total This Month) */
+.summary-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.summary-card h2 {
+    font-size: 1.3em;
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.summary-card .total-amount {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-green); /* Green for total amount */
+    margin: 10px 0;
+}
+
+.summary-card .summary-description {
+    color: var(--text-medium);
+    font-size: 0.95em;
+    margin: 0;
+}
+
+/* Filter Card - Basic styling to keep it distinct but simple */
+.filter-card {
+    padding: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; /* Center filter controls */
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.filter-group select,
+.filter-group input {
+    flex: 1; /* Allow inputs/selects to grow */
+    min-width: 120px; /* Minimum width before wrapping */
+    padding: 10px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--text-dark);
+}
+
+.filter-group button {
+    padding: 10px 15px;
+    background-color: var(--text-medium); /* A neutral button for filter reset */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-group button:hover {
+    background-color: #555;
+}
+
+
+/* Expenses List Styling */
+.expenses-list-title {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.expenses-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.expense-item-card {
+    display: flex;
+    flex-direction: column; /* Stack details, description, amount vertically */
+    padding: 15px; /* Slightly reduced padding */
+    margin-bottom: 15px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px var(--shadow-light); /* Softer shadow */
+    position: relative; /* For absolute positioning of delete button */
+    overflow: hidden; /* Clip any overflowing content */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.expense-item-card:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.expense-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Space between header and date */
+}
+
+.expense-header .category-icon {
+    font-size: 1.1em; /* Size of the category icon */
+    color: var(--primary-green);
+    margin-right: 8px;
+    width: 20px; /* Fixed width to ensure text alignment */
+    text-align: center;
+}
+
+.expense-header .category-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1em;
+}
+
+.expense-date {
+    display: flex;
+    align-items: center;
+    color: var(--text-medium);
+    font-size: 0.85em;
+    margin-bottom: 10px; /* Space between date and description */
+}
+
+.expense-date .fas.fa-calendar-alt {
+    margin-right: 5px;
+    font-size: 0.85em;
+}
+
+.expense-amount {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--delete-red); /* Red for expense amount */
+    text-align: right; /* Right align amount within its space */
+    margin-left: auto; /* Push amount to the right */
+    padding-left: 20px; /* Ensure space from description if it's long */
+    margin-bottom: 10px; /* Add some space below amount if it's the last element */
+}
+
+.expense-description {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin-bottom: 15px; /* Space above the delete icon/bottom of card if no delete button */
+    word-break: break-word; /* Ensure long descriptions wrap */
+}
+
+.delete-expense-btn {
+    position: absolute; /* Position in the top right */
+    top: 10px;
+    right: 10px;
+    background: none; /* Transparent background */
+    border: none;
+    color: var(--delete-red);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 5px; /* Add padding for easier click area */
+    border-radius: 5px; /* Slightly rounded for hover effect */
+    z-index: 1; /* Ensure it's clickable above other content */
+}
+
+.delete-expense-btn:hover {
+    color: var(--delete-red-hover);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* No expenses found message */
+.expenses-list p {
+    text-align: center;
+    color: var(--text-medium);
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 15px; /* Reduce overall padding on smaller screens */
+    }
+    .app-header h1 {
+        font-size: 2em; /* Smaller title on mobile */
+    }
+    .card {
+        padding: 20px; /* Slightly less padding for cards */
+    }
+    .input-card .form-group {
+        margin-bottom: 15px;
+    }
+    .input-card input,
+    .input-card select {
+        font-size: 1em;
+        padding: 10px 12px;
+    }
+    .add-expense-btn {
+        font-size: 1.1em;
+        padding: 12px 15px;
+    }
+    .summary-card .total-amount {
+        font-size: 2em;
+    }
+    .expenses-list-title {
+        font-size: 1.6em;
+    }
+    .expense-item-card {
+        flex-direction: column; /* Ensure vertical stacking */
+        align-items: flex-start; /* Left align content */
+        padding: 15px;
+    }
+    /* Reorder elements for better display on small screens */
+    .expense-amount {
+        margin-left: 0; /* Remove auto margin */
+        text-align: left; /* Left align amount */
+        width: 100%; /* Take full width */
+        order: 4; /* Order it after description to be at the bottom */
+    }
+    .expense-description {
+        order: 3;
+    }
+    .expense-date {
+        order: 2;
+    }
+    .expense-header {
+        order: 1;
+    }
+    .delete-expense-btn {
+        top: 5px;
+        right: 5px;
+        order: 0; /* Make sure it's always on top visually */
+    }
+    .filter-group {
+        flex-direction: column; /* Stack filter elements vertically */
+        align-items: stretch; /* Stretch them to full width */
+    }
+    .filter-group select,
+    .filter-group input,
+    .filter-group button {
+        width: 100%; /* Full width for filter controls */
+    }
+}
