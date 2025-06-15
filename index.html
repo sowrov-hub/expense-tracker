@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="header-logo">
+                <i class="fas fa-cube"></i> </div>
+            <h1>Expense Tracker</h1>
+            <p class="tagline">Keep your finances in check, one expense at a time.</p>
+        </header>
+
+        <div class="main-content">
+            <div class="card input-card">
+                <div class="form-group">
+                    <label for="expenseAmount">Amount</label>
+                    <div class="input-with-icon">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="expenseAmount" placeholder="0.00" step="0.01" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseCategory">Category</label>
+                    <select id="expenseCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseDate">Date</label>
+                    <div class="input-with-icon">
+                        <input type="date" id="expenseDate" required>
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenseDescription">Description <span class="optional-text">(Optional)</span></label>
+                    <input type="text" id="expenseDescription" placeholder="e.g., Groceries for the week">
+                </div>
+
+                <button id="addExpenseBtn" class="add-expense-btn">Add Expense</button>
+            </div>
+
+            <div class="card summary-card">
+                <div class="summary-header">
+                    <h2>Total Expenses for <span id="currentPeriodLabel"></span></h2>
+                </div>
+                <p class="total-amount" id="totalPeriodExpenses">$0.00</p>
+                <p class="summary-description">Your spending for the currently selected period.</p>
+            </div>
+
+            <div class="card filter-card">
+                <div class="form-group filter-group">
+                    <label for="filterPeriod">View:</label>
+                    <select id="filterPeriod">
+                        <option value="daily">Daily</option>
+                        <option value="monthly" selected>Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                    <input type="month" id="filterMonthYear" style="display: none;">
+                    <input type="number" id="filterYear" placeholder="Year" min="2000" max="2100" style="display: none;">
+                    <input type="date" id="filterDate" style="display: none;">
+                    <button id="resetFilterBtn">Reset Filter</button>
+                </div>
+            </div>
+
+            <h2 class="expenses-list-title">Your Expenses</h2>
+            <ul id="expenseList" class="expenses-list">
+                </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
